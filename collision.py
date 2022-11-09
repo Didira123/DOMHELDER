@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 from matplotlib import animation
 import queue
+import time
 import math
 
-
+inicioTempo = time.time()
 class Particle:
     """A class representing a two-dimensional particle."""
 
@@ -308,8 +309,10 @@ class Simulation:
                     self.circles.append(circle)
                     self.update_collisions(i)
                     self.update_collisions(j)
+
         for i, p in enumerate(self.particles):
             self.circles[i].center = p.pos(self.t)
+        arrayPosXPosYTempo.append(["Tempo: "+str(time.time()-inicioTempo), "X: "+str(self.particles[0].pos(self.t)[0]), "Y: "+str(self.particles[0].pos(self.t)[1])])
         return self.circles
 
     def init(self):
@@ -322,7 +325,7 @@ class Simulation:
 
     def animate(self, i):
         """The function passed to Matplotlib's FuncAnimation routine."""
-
+        # inicioTempo = time.time()
         self.advance_animation()
         return self.circles
 
@@ -364,7 +367,9 @@ if __name__ == '__main__':
             array.append(0.04)
         else:
             array.append(0.01)
+    arrayPosXPosYTempo = []
     radii= array
     styles = {'edgecolor': 'C0', 'linewidth': 2}
     sim = Simulation(nparticles, 0.0, radii, styles)
     sim.do_animation(save=False)
+    print (arrayPosXPosYTempo)
