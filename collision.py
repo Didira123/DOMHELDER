@@ -312,7 +312,7 @@ class Simulation:
 
         for i, p in enumerate(self.particles):
             self.circles[i].center = p.pos(self.t)
-        arrayPosXPosYTempo.append(["Tempo: "+str(time.time()-inicioTempo), "X: "+str(self.particles[0].pos(self.t)[0]), "Y: "+str(self.particles[0].pos(self.t)[1])])
+        arrayPosXPosYTempo.append([str(time.time()-inicioTempo), str(self.particles[0].pos(self.t)[0])])
         return self.circles
 
     def init(self):
@@ -372,4 +372,6 @@ if __name__ == '__main__':
     styles = {'edgecolor': 'C0', 'linewidth': 2}
     sim = Simulation(nparticles, 0.0, radii, styles)
     sim.do_animation(save=False)
-    print (arrayPosXPosYTempo)
+
+    for i in range(len(arrayPosXPosYTempo)):
+        print("Tempo: "+arrayPosXPosYTempo[i][0]+", PosX: "+arrayPosXPosYTempo[i][1])
