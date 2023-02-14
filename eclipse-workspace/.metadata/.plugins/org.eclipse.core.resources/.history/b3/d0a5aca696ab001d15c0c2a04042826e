@@ -1,0 +1,30 @@
+public class Funcionario {
+
+	String nome;
+	Double salario;
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+
+	public Double getSalario() {
+		return this.salario;
+	}
+
+	public Funcionario() {
+	}
+
+	public Funcionario(String nome, Double salario) {
+		setNome(nome);
+		setSalario(salario);
+	}
+
+}
